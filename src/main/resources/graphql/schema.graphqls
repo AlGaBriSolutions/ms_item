@@ -1,0 +1,34 @@
+type Query{
+    items: [Item]
+    itemsByClasificacion(clasificacion: Int!): [Item]
+    itemsByTitulo(titulo: String!): [Item]
+    item(id: ID!): Item
+}
+
+type Item{
+    Id: ID!
+    titulo: String!
+    clasificacion: Int!
+    foto: String
+    contenido: String!
+    valoraciones: [Valoracion]
+    tipoPrecio: Int!
+    precio: Int!
+    preguntas: [Pregunta]
+    vendedor: Int!
+    disponibilidad: Int!
+}
+
+type Valoracion{
+    id: ID!
+    calificacion: Int!
+    cliente: Int!
+    comentario: String!
+}
+
+type Pregunta{
+    id: ID!
+    cliente: Int!
+    pregunta: String!
+    respuesta: String!
+}
