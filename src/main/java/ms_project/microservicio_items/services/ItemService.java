@@ -41,4 +41,7 @@ public class ItemService {
         }
     }
 
+    public Item agregarItem(Item itemm){
+        return repositorioItem.save(itemm);
+    }
 }

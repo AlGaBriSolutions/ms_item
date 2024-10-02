@@ -32,3 +32,20 @@ type Pregunta{
     pregunta: String!
     respuesta: String!
 }
+
+type Mutation{
+    agregarItem(Item: ItemInput): Item
+}
+
+input ItemInput{
+    titulo: String!
+    clasificacion: Int!
+    foto: String
+    contenido: String!
+    valoraciones: [Valoracion]
+    tipoPrecio: Int!
+    precio: Int!
+    preguntas: [Pregunta]
+    vendedor: Int!
+    disponibilidad: Int!
+}

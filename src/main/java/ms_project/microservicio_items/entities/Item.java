@@ -18,6 +18,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 public class Item {
+    public Item(String titulo2, Integer clasificacion2, Blob foto2, String contenido2,
+            ArrayList<Valoracion> valoraciones2, Integer tipo_precio2, Integer precio2, ArrayList<Pregunta> preguntas2,
+            Integer vendedor2, Integer disponibilidad2) {
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
