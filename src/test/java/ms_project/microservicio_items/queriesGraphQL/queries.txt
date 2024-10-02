@@ -1,0 +1,31 @@
+query items{
+  items{
+    Id
+    titulo
+    clasificacion
+  }
+}
+
+query itemsByClass{
+  itemsByClasificacion(clasificacion: 1){
+    Id
+    titulo
+    clasificacion
+  }
+}
+
+query itemsByTitulo{
+  itemsByTitulo(titulo: "el"){
+    Id
+    titulo
+    clasificacion
+  }
+}
+
+query itemsById{
+  getItem(id: 1){
+    Id
+    titulo
+    clasificacion
+  }
+}

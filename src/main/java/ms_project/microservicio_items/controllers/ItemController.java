@@ -24,13 +24,17 @@ public class ItemController {
     }
     
     @QueryMapping
-    Iterable<Item> itemsByClasificacion(@Argument Integer Clasificacion){
-        return ItemService.getItemsClasificacion(Clasificacion);
+    Iterable<Item> itemsByClasificacion(@Argument Integer clasificacion){
+        System.out.println(clasificacion.toString());
+        return ItemService.getItemsClasificacion(clasificacion);
     }
 
     @QueryMapping
-    Iterable<Item> itemByTitulo(@Argument String Titulo){
-        return ItemService.getItemsSimilar(Titulo);
+    Iterable<Item> itemsByTitulo(@Argument String titulo){
+        System.out.println("\n");
+        System.out.println(titulo);
+        System.out.println("\n");
+        return ItemService.getItemsSimilar(titulo);
     }
 
     @QueryMapping
