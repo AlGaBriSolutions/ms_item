@@ -2,7 +2,7 @@ type Query{
     items: [Item]
     itemsByClasificacion(clasificacion: Int!): [Item]
     itemsByTitulo(titulo: String!): [Item]
-    item(id: ID!): Item
+    getItem(id: ID!): Item
 }
 
 type Item{
