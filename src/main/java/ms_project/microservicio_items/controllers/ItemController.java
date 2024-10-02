@@ -1,6 +1,5 @@
 package ms_project.microservicio_items.controllers;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,33 +29,27 @@ public class ItemController {
     }
     
     @QueryMapping
-    Iterable<Item> itemsByClasificacion(@Argument Integer clasificacion){
-        System.out.println(clasificacion.toString());
+    Iterable<Item> itemsByClasificacion(@Argument int clasificacion){
         return ItemService.getItemsClasificacion(clasificacion);
     }
 
     @QueryMapping
     Iterable<Item> itemsByTitulo(@Argument String titulo){
-        System.out.println("\n");
-        System.out.println(titulo);
-        System.out.println("\n");
         return ItemService.getItemsSimilar(titulo);
     }
 
     @QueryMapping
-    Item getItem(@Argument Long id){
+    Item item(@Argument Long id){
         return ItemService.getItem(id);
     }
     
     @MutationMapping
     Item agregarItem(@Argument ItemInput Item){
-        Item item = new Item(Item.titulo(), Item.clasificacion(),
-        Item.foto(), Item.contenido(),
-        Item.valoraciones(), Item.tipo_precio(),
-        Item.precio(), Item.preguntas(),
-        Item.vendedor(), Item.disponibilidad());
+        Item item = new Item(Item.titulo(), Item.clasificacion(), Item.foto(), Item.contenido(),
+                      Item.valoraciones(), Item.tipoPrecio(), Item.precio(), Item.preguntas(),
+                      Item.vendedor(), Item.disponibilidad());
         return ItemService.agregarItem(item);
     }
-    record ItemInput(String titulo, Integer clasificacion, Blob foto, String contenido, ArrayList<Valoracion> valoraciones, Integer tipo_precio, Integer precio, ArrayList<Pregunta> preguntas, Integer vendedor, Integer disponibilidad){}
+    record ItemInput(String titulo, Integer clasificacion, String foto, String contenido, ArrayList<Valoracion> valoraciones, Integer tipoPrecio, Integer precio, ArrayList<Pregunta> preguntas, Integer vendedor, Integer disponibilidad){}
 
 }

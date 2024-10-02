@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,22 +17,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class Valoracion {
+    public Valoracion(int i, int j, String string, Item item2) {
+        this.calificacion = i;
+        this.cliente = j;
+        this.comentario = string;
+        this.item = item2;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Integer calificacion;
-    private Integer cliente_id;
+    private Integer cliente;
     private String comentario;
-
     @ManyToOne
-    Item item;
-
-    public Valoracion(Integer calificacion, Integer cliente_id, String comentario, Item item) {
-        this.calificacion = calificacion;
-        this.cliente_id = cliente_id;
-        this.comentario = comentario;
-        this.item = item;
-    }
-
-    
+    @JoinColumn(name = "valoracion_id")
+    private Item item;
 }

@@ -1,9 +1,6 @@
 package ms_project.microservicio_items.entities;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,9 +18,30 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 public class Item {
-    public Item(String titulo2, Integer clasificacion2, Blob foto2, String contenido2,
-            ArrayList<Valoracion> valoraciones2, Integer tipo_precio2, Integer precio2, ArrayList<Pregunta> preguntas2,
+    public Item(String titulo2, Integer clasificacion2, String foto2, String contenido2,
+            List<Valoracion> valoraciones2, Integer tipoPrecio2, Integer precio2, List<Pregunta> preguntas2,
             Integer vendedor2, Integer disponibilidad2) {
+                this.titulo = titulo2;
+                this.clasificacion = clasificacion2;
+                this.foto = foto2;
+                this.contenido = contenido2;
+                this.valoraciones = valoraciones2;
+                this.tipoPrecio = tipoPrecio2;
+                this.precio = precio2;
+                this.preguntas = preguntas2;
+                this.vendedor = vendedor2;
+                this.disponibilidad = disponibilidad2;
+    }
+    public Item(String nombre, int i, String foto2, String contenido2, Integer tipoPrecio2, Integer precio2,
+            Integer vendedor2, int i2) {
+        this.titulo = nombre;
+        this.clasificacion = i;
+        this.foto = foto2;
+        this.contenido = contenido2;
+        this.tipoPrecio = tipoPrecio2;
+        this.precio = precio2;
+        this.vendedor = vendedor2;
+        this.disponibilidad = i2;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,34 +50,12 @@ public class Item {
     private Integer clasificacion;
     private String foto;
     private String contenido;
-
-    @JsonIgnore
     @OneToMany(mappedBy = "item")
-    private List<Valoracion> valoraciones = new ArrayList();
-
-    //0: Dólares
-    //1: Pesos colombianos
-    //2: Bolívares
-    private Integer tipo_precio;
+    private List<Valoracion> valoraciones;
+    private Integer tipoPrecio;
     private Integer precio;
-
-    @JsonIgnore
     @OneToMany(mappedBy = "item")
-    private List<Pregunta> preguntas = new ArrayList();
-
-    //Varia desde 0 hasta 14
+    private List<Pregunta> preguntas;
     private Integer vendedor;
-    private Boolean disponibilidad;
-
-    public Item(String titulo, Integer clasificacion, String foto, String contenido, Integer tipo_precio, Integer precio, Integer vendedor, Boolean disponibilidad) {
-        this.titulo = titulo;
-        this.clasificacion = clasificacion;
-        this.foto = foto;
-        this.contenido = contenido;
-        this.tipo_precio = tipo_precio;
-        this.precio = precio;
-        this.vendedor = vendedor;
-        this.disponibilidad = disponibilidad;
-    }
-
+    private Integer disponibilidad;
 }

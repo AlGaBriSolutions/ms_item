@@ -1,6 +1,5 @@
 package ms_project.microservicio_items.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +22,11 @@ public class ItemService {
         return repositorioItem.findAll();
     }
 
-    public List<Item> getItemsClasificacion(Integer Clasificacion){
+    public Iterable<Item> getItemsClasificacion(Integer Clasificacion){
         return repositorioItem.findByClasificacion(Clasificacion);
     }
 
-    public List<Item> getItemsSimilar(String titulo){
-        System.out.println("\n");
-        System.out.println(titulo);
-        System.out.println("\n");
+    public Iterable<Item> getItemsSimilar(String titulo){
         return repositorioItem.findByTituloLike("%" + titulo + "%");
     }
 

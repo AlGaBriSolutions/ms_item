@@ -2,7 +2,7 @@ type Query{
     items: [Item]
     itemsByClasificacion(clasificacion: Int!): [Item]
     itemsByTitulo(titulo: String!): [Item]
-    getItem(id: ID!): Item
+    item(id: ID!): Item
 }
 
 type Item{
@@ -42,10 +42,22 @@ input ItemInput{
     clasificacion: Int!
     foto: String
     contenido: String!
-    valoraciones: [Valoracion]
+    valoraciones: [ValoracionInput]
     tipoPrecio: Int!
     precio: Int!
-    preguntas: [Pregunta]
+    preguntas: [PreguntaInput]
     vendedor: Int!
     disponibilidad: Int!
+}
+
+input ValoracionInput {
+  calificacion: Int!
+  cliente: Int!
+  comentario: String!
+}
+
+input PreguntaInput{
+    cliente: Int!
+    pregunta: String!
+    respuesta: String!
 }

@@ -94,13 +94,13 @@ public class DatabaseInit implements ApplicationRunner{
             // Crear nuevo item
             Item nuevoItem = new Item(
                 nombre,                      // Título del servicio
-                i + 1,       // Clasificación aleatoria entre 1 y 6
+                i + 1,                       // Clasificación aleatoria entre 1 y 6
                 foto,                        // URL de la foto
                 contenido,                   // Descripción del servicio
-                tipoPrecio,                  // Tipo de precio
+                tipoPrecio,                  // Tipo de precio 1 unico, 2 hora, 3 dia
                 precio,                      // Precio según el tipo
                 vendedor,                    // Vendedor aleatorio
-                true                         // Disponibilidad (asumimos que siempre está disponible)
+                i                            // Unidades o plazas disponibles
             );
 
             // Guardar el nuevo item en la base de datos
@@ -126,7 +126,7 @@ public class DatabaseInit implements ApplicationRunner{
         };
 
         for (int i = 0; i < 5; i++) {
-            Pregunta pregunta =  new Pregunta(i + 15, preguntas[i], respuestas[i]);
+            Pregunta pregunta =  new Pregunta(i + 15, preguntas[i], respuestas[i], repoItem.findById(1L).get());
             pregunta.setItem(repoItem.findById(i + 1L).get());
             
             repoPregunta.save(pregunta);
